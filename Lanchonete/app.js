@@ -50,11 +50,11 @@ botoesAdicionar.forEach((botao) => {
     // Pergunta a quantidade
     let quantidade = prompt(`Quantos "${nomeProduto}" você deseja adicionar ao carrinho?`, '1');
 
-    // Se o usuário digitou um número válido e não cancelou
+// Se o usuário digitou um número válido e não cancelou
     if (quantidade !== null && quantidade > 0) {
       quantidade = parseInt(quantidade);
 
-      // Monta o "pacote" do produto
+      // 1. Monta o "pacote" do produto UMA ÚNICA VEZ aqui
       const item = {
         nome: nomeProduto,
         preco: precoNumero,
@@ -62,32 +62,24 @@ botoesAdicionar.forEach((botao) => {
         qtd: quantidade,
       };
 
-    // Busca o carrinho na memória (ou cria um vazio se não existir)
+      // 2. Busca o carrinho na memória
       let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
 
-      // Verifica se o lanche já existe no carrinho
-      // O findIndex vai procurar um produto que tenha o mesmo nome do lanche que estamos tentando adicionar
+      // 3. Verifica se o lanche já existe
       const indexExistente = carrinho.findIndex(produto => produto.nome === nomeProduto);
 
-      // Se o findIndex achar, ele devolve a posição (0, 1, 2...). Se NÃO achar, ele devolve -1.
       if (indexExistente !== -1) {
-        // O lanche já existe! Vamos apenas somar a nova quantidade com a quantidade que já estava lá.
+        // O lanche já existe! Só soma a quantidade.
         carrinho[indexExistente].qtd += quantidade;
       } else {
-        // O lanche não existe no carrinho. Vamos montar o pacote e jogar lá dentro (push).
-        const item = {
-          nome: nomeProduto,
-          preco: precoNumero,
-          img: imagemSrc,
-          qtd: quantidade,
-        };
+        // O lanche NÃO existe! 
+        // Como o 'item' já foi montado lá no passo 1, é só jogar ele direto aqui:
         carrinho.push(item);
       }
 
-      // Salva de volta na memória
+      // 4. Salva de volta na memória
       localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
 
-      // Se estiver usando o SweetAlert2, o aviso continua igual
       alert(`Feito! ${quantidade}x ${nomeProduto} adicionado(s) ao carrinho! 🛒`);
     }
   });
