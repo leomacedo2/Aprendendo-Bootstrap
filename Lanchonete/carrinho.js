@@ -62,7 +62,7 @@ function finalizarCompra() {
   }
 
   alert(
-    `Compra de R$ ${valorTotal.toFixed(2).replace(".", ",")} finalizada com sucesso! A entrega está correndo na velocidade do som até você! ⚡`,
+    `Compra de R$ ${valorTotal.toFixed(2).replace(".", ",")} finalizada com sucesso! A entrega está correndo na velocidade do som até você!`,
   );
 
   // Limpa a memória e recarrega a página
