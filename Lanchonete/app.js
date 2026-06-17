@@ -62,13 +62,32 @@ botoesAdicionar.forEach((botao) => {
         qtd: quantidade,
       };
 
-      // Busca o carrinho na memória (ou cria um vazio se não existir)
+    // Busca o carrinho na memória (ou cria um vazio se não existir)
       let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
 
-      // Adiciona o item novo e salva de volta na memória
-      carrinho.push(item);
+      // Verifica se o lanche já existe no carrinho
+      // O findIndex vai procurar um produto que tenha o mesmo nome do lanche que estamos tentando adicionar
+      const indexExistente = carrinho.findIndex(produto => produto.nome === nomeProduto);
+
+      // Se o findIndex achar, ele devolve a posição (0, 1, 2...). Se NÃO achar, ele devolve -1.
+      if (indexExistente !== -1) {
+        // O lanche já existe! Vamos apenas somar a nova quantidade com a quantidade que já estava lá.
+        carrinho[indexExistente].qtd += quantidade;
+      } else {
+        // O lanche não existe no carrinho. Vamos montar o pacote e jogar lá dentro (push).
+        const item = {
+          nome: nomeProduto,
+          preco: precoNumero,
+          img: imagemSrc,
+          qtd: quantidade,
+        };
+        carrinho.push(item);
+      }
+
+      // Salva de volta na memória
       localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
 
+      // Se estiver usando o SweetAlert2, o aviso continua igual
       alert(`Feito! ${quantidade}x ${nomeProduto} adicionado(s) ao carrinho! 🛒`);
     }
   });
