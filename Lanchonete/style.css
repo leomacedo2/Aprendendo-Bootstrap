@@ -1,8 +1,6 @@
 body {
   /* O linear-gradient cria uma película branca com 85% de opacidade (0.85) por cima da imagem */
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
-    url("assets/background.jpg");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('assets/background.jpg');
   background-size: cover; /* Garante que a imagem cubra a tela toda */
   background-position: center; /* Centraliza a imagem */
   background-attachment: fixed; /* Deixa o fundo congelado enquanto você rola a página (Efeito Parallax suave) */
