@@ -1,0 +1,44 @@
+/* Estilos gerais para as duas páginas
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Estilos SÓ para a Home */
+.pagina-home {
+  background-color: #005ce6;
+}
+
+/* Estilos SÓ para o Formulário */
+.pagina-formulario {
+  background-color: #f4f4f9;
+}
+
+
+.navbar-sonic {
+  background-color: rgba(15, 15, 15, 0.85); /* Preto quase transparente */
+  backdrop-filter: blur(10px); /* Borra o que estiver atrás da navbar */
+  border-bottom: 2px solid #dc3545; /* Uma linha vermelha fina embaixo (vibe dos tênis do Sonic) */
+}
+
+.navbar-sonic .nav-link {
+  text-transform: uppercase; /* Deixa tudo em MAIÚSCULO */
+  letter-spacing: 1px; /* Espaça um pouco as letras */
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.navbar-sonic .nav-link:hover {
+  color: #0dcaf0 !important; /* Azul neon quando passa o mouse */
+}
+
+.carousel-caption h1 {
+  color: yellow;
+  text-shadow: 2px 2px 5px black;
+  font-weight: bold;
+}
+
+.carousel-caption p {
+  color: yellow;
+  text-shadow: 2px 2px 5px black;
+  font-weight: bold;
+}
