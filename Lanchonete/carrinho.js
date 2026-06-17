@@ -19,12 +19,12 @@ function carregarCarrinho() {
   let htmlGerado = '';
   valorTotal = 0;
 
-  // NOVO: Adicionamos o "index" aqui. Ele é a posição do lanche na fila (0, 1, 2...)
+  // Adicionamos o "index" aqui. Ele é a posição do lanche na fila (0, 1, 2...)
   itensCarrinho.forEach((item, index) => {
     const subtotal = item.preco * item.qtd;
     valorTotal += subtotal; 
 
-    // NOVO: Adicionamos o botão "Remover" na div do preço, passando o 'index' para ele
+    // Adicionamos o botão "Remover" na div do preço, passando o 'index' para ele
     htmlGerado += `
         <div class="card mb-3 border-0 shadow-sm bg-light">
           <div class="row g-0 align-items-center">
