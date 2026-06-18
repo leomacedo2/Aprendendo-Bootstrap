@@ -56,6 +56,7 @@ botoesAdicionar.forEach((botao) => {
     // Captura os dados do card
     const nomeProduto = card.querySelector('.card-title').innerText;
     const imagemSrc = card.querySelector('.card-img-top').src;
+    const classeCor = card.querySelector('.card-title').classList[2]; 
 
     // Pega o texto "R$ 25,90", limpa e converte para um número de verdade (25.90)
     const precoTexto = card.querySelector('.fs-5').innerText;
@@ -71,6 +72,7 @@ botoesAdicionar.forEach((botao) => {
       preco: precoNumero,
       img: imagemSrc,
       qtd: quantidade,
+      cor: classeCor
     };
 
     // 2. Busca o carrinho na memória

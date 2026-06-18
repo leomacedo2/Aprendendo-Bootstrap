@@ -34,7 +34,7 @@ function carregarCarrinho() {
             <div class="col-md-9">
               <div class="card-body d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                 <div class="mb-3 mb-sm-0">
-                  <h5 class="card-title fw-bold text-dark mb-2">${item.nome}</h5>
+                  <h5 class="card-title fw-bold ${item.cor} mb-2">${item.nome}</h5>
                   <div class="d-flex align-items-center gap-2">
                     <span class="text-muted small fw-bold">Quantidade:</span>
                     <div class="input-group input-group-sm" style="width: 110px;">
