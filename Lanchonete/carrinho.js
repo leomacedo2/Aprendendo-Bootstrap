@@ -24,7 +24,7 @@ function carregarCarrinho() {
     const subtotal = item.preco * item.qtd;
     valorTotal += subtotal;
 
-    // Adicionamos o botão "Remover" na div do preço, passando o 'index' para ele
+    // htmlGerado para ser adicionado na divLista
     htmlGerado += `
         <div class="card mb-3 border-0 shadow-sm bg-light">
           <div class="row g-0 align-items-center">
