@@ -34,8 +34,12 @@ function carregarCarrinho() {
             <div class="col-md-9">
               <div class="card-body d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                 <div class="mb-3 mb-sm-0">
-                  <h5 class="card-title fw-bold text-dark mb-1">${item.nome}</h5>
-                  <p class="card-text mb-0 text-muted">Quantidade: <strong>${item.qtd}x</strong></p>
+                  <h5 class="card-title fw-bold text-dark mb-2">${item.nome}</h5>
+                  <div class="input-group input-group-sm" style="width: 110px;">
+                    <button class="btn btn-outline-danger px-2 fw-bold" onclick="mudarQtdCarrinho(${index}, -1)">-</button>
+                    <input type="text" class="form-control text-center fw-bold px-1" value="${item.qtd}" readonly>
+                    <button class="btn btn-outline-success px-2 fw-bold" onclick="mudarQtdCarrinho(${index}, 1)">+</button>
+                  </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center flex-sm-column text-sm-end">
                   <span class="fs-5 fw-bold text-success mb-0 mb-sm-2">R$ ${subtotal.toFixed(2).replace('.', ',')}</span>
@@ -67,7 +71,29 @@ function removerItem(index) {
   carregarCarrinho();
 }
 
-// --- 3. Função para o botão "Pagar Agora" ---
+// --- 3. Função para os botões de + e - dentro do Carrinho ---
+function mudarQtdCarrinho(index, mudanca) {
+  let carrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
+  let novaQtd = carrinho[index].qtd + mudanca;
+
+  // Se a quantidade chegar a zero, pergunta se quer remover
+  if (novaQtd === 0) {
+    const querRemover = confirm(`Deseja remover o item "${carrinho[index].nome}" do carrinho?`);
+    if (querRemover) {
+      removerItem(index); // Reutilizamos a sua função que já funciona!
+    }
+    return; // Para o código por aqui para não salvar zero no local storage
+  }
+
+  // Se não foi zero, atualiza a quantidade e salva
+  carrinho[index].qtd = novaQtd;
+  localStorage.setItem('meuCarrinho', JSON.stringify(carrinho));
+  
+  // Recarrega a tela para recalcular os valores totais em tempo real
+  carregarCarrinho();
+}
+
+// --- 4. Função para o botão "Pagar Agora" ---
 function finalizarCompra() {
   const itensCarrinho = JSON.parse(localStorage.getItem('meuCarrinho')) || [];
 
