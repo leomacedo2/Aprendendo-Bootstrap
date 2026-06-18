@@ -35,10 +35,13 @@ function carregarCarrinho() {
               <div class="card-body d-flex flex-column flex-sm-row justify-content-between align-items-sm-center">
                 <div class="mb-3 mb-sm-0">
                   <h5 class="card-title fw-bold text-dark mb-2">${item.nome}</h5>
-                  <div class="input-group input-group-sm" style="width: 110px;">
-                    <button class="btn btn-outline-danger px-2 fw-bold" onclick="mudarQtdCarrinho(${index}, -1)">-</button>
-                    <input type="text" class="form-control text-center fw-bold px-1" value="${item.qtd}" readonly>
-                    <button class="btn btn-outline-success px-2 fw-bold" onclick="mudarQtdCarrinho(${index}, 1)">+</button>
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="text-muted small fw-bold">Quantidade:</span>
+                    <div class="input-group input-group-sm" style="width: 110px;">
+                      <button class="btn btn-outline-danger px-2 fw-bold" onclick="mudarQtdCarrinho(${index}, -1)">-</button>
+                      <input type="text" class="form-control text-center fw-bold px-1" value="${item.qtd}" readonly>
+                      <button class="btn btn-outline-success px-2 fw-bold" onclick="mudarQtdCarrinho(${index}, 1)">+</button>
+                    </div>
                   </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center flex-sm-column text-sm-end">
